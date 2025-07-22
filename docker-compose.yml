@@ -1,7 +1,8 @@
 version: '3'
 services:
   web:
-    image: jc21/nginx-proxy-manager
+    container_name: dockergs_web
+    image: shiroinekotfs/genshindocker:_nginx_proxy
     deploy:
       resources:
         limits:
@@ -17,7 +18,8 @@ services:
 
   mongodb:
     restart: always
-    image: mongo
+    container_name: dockergs_mongodb
+    image: shiroinekotfs/genshindocker:_mongodb
     deploy:
       resources:
         limits:
@@ -33,7 +35,7 @@ services:
   grasscutter:
     restart: always
     container_name: dockergs
-    image: 'shiroinekotfs/genshindocker:ubuntu-gc-5.0'
+    image: shiroinekotfs/genshindocker:ubuntu-gc-5.0
     deploy:
       resources:
         limits:
