@@ -41,11 +41,11 @@ services:
         limits:
           memory: 2G
     command: >-
-      --database 'mongodb://${MONGODB_ADMIN}:${MONGODB_PASSWORD}@dockergs:27017' --web_ip
+      --database 'mongodb://${MONGODB_ADMIN}:${MONGODB_PASSWORD}@mongodb:27017' --web_ip
       '0.0.0.0' --web_port "80" --game_ip '0.0.0.0' --java '-Xmx2G' --ssl
       "false" --web_url_ssl "false"
     volumes:
-      - './res:/home/dockergs/resources'
+      - './res/Resources:/home/dockergs/resources'
     ports:
       - '22102:22102/udp'
     depends_on:
