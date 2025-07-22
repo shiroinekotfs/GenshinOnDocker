@@ -1,3 +1,2 @@
-data_web
-data_db
-letsencrypt
+run
+.env
