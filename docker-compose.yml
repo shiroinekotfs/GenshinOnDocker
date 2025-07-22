@@ -1,20 +1,5 @@
 version: '3'
 services:
-  web:
-    container_name: dockergs_web
-    image: shiroinekotfs/genshindocker:_nginx_proxy
-    deploy:
-      resources:
-        limits:
-          memory: 512M
-    restart: always
-    ports:
-      - '80:80'
-      - '81:81'
-      - '443:443'
-    volumes:
-      - './run/data_web:/data'
-      - './run/letsencrypt:/etc/letsencrypt'
 
   mongodb:
     restart: always
@@ -27,7 +12,7 @@ services:
     ports:
       - '27017:27017'
     volumes:
-      - './run/data_db:/data/db'
+      - './run/db:/data/db'
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${MONGODB_ADMIN}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGODB_PASSWORD}
@@ -47,6 +32,8 @@ services:
     volumes:
       - './res/Resources:/home/dockergs/resources'
     ports:
+      - '80:80'
+      - '443:443'
       - '22102:22102/udp'
     depends_on:
       - mongodb
